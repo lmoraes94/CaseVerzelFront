@@ -46,7 +46,7 @@ export const DeleteUserModal = ({
         status: "success",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
       queryClient.invalidateQueries("users");
       onClose();
@@ -59,7 +59,7 @@ export const DeleteUserModal = ({
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     },
   });

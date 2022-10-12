@@ -39,8 +39,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const loadStoragedData = async () => {
       const cookies = parseCookies();
 
-      const { "@Dashboard-Template:authUser": storagedUser } = cookies;
-      const { "@Dashboard-Template:authToken": storagedToken } = cookies;
+      const { "@Verzel:authUser": storagedUser } = cookies;
+      const { "@Verzel:authToken": storagedToken } = cookies;
 
       await new Promise((resolve) => setTimeout(resolve, 1200));
 
@@ -79,22 +79,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         setCookie(
           undefined,
-          "@Dashboard-Template:authUser",
+          "@Verzel:authUser",
           JSON.stringify(response?.data?.user),
           {
             path: "/",
           }
         );
 
-        setCookie(
-          undefined,
-          "@Dashboard-Template:authToken",
-          response?.data?.token,
-          {
-            path: "/",
-            maxAge: 60 * 60 * 24 * 7, // 7 days
-          }
-        );
+        setCookie(undefined, "@Verzel:authToken", response?.data?.token, {
+          path: "/",
+          maxAge: 60 * 60 * 24 * 7, // 7 days
+        });
 
         toast({
           title: "Sucesso.",
@@ -102,7 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           status: "success",
           duration: 2500,
           isClosable: true,
-          position: "top",
+          position: "bottom-right",
         });
 
         router.push("/users");
@@ -119,7 +114,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     }
   };
@@ -133,7 +128,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         setCookie(
           undefined,
-          "@Dashboard-Template:authUser",
+          "@Verzel:authUser",
           JSON.stringify(response.data.user),
           {
             path: "/",
@@ -146,7 +141,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           status: "success",
           duration: 2500,
           isClosable: true,
-          position: "top",
+          position: "bottom-right",
         });
       }
     } catch (e: any) {
@@ -158,7 +153,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     }
   };
@@ -176,7 +171,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         setCookie(
           undefined,
-          "@Dashboard-Template:authUser",
+          "@Verzel:authUser",
           JSON.stringify(response.data.user),
           {
             path: "/",
@@ -189,7 +184,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           status: "success",
           duration: 2500,
           isClosable: true,
-          position: "top",
+          position: "bottom-right",
         });
       }
     } catch (e: any) {
@@ -200,7 +195,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     }
   };
@@ -239,7 +234,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         setCookie(
           undefined,
-          "@Dashboard-Template:authUser",
+          "@Verzel:authUser",
           JSON.stringify(response?.data?.user),
           {
             path: "/",
@@ -252,7 +247,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           status: "success",
           duration: 2500,
           isClosable: true,
-          position: "top",
+          position: "bottom-right",
         });
       }
     } catch (e: any) {
@@ -263,7 +258,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     }
   };
@@ -271,8 +266,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const Logout = () => {
     setUser(null);
 
-    destroyCookie(undefined, "@Dashboard-Template:authUser");
-    destroyCookie(undefined, "@Dashboard-Template:authToken");
+    destroyCookie(undefined, "@Verzel:authUser");
+    destroyCookie(undefined, "@Verzel:authToken");
 
     router.push("/");
 
@@ -282,7 +277,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       status: "success",
       duration: 2500,
       isClosable: true,
-      position: "top",
+      position: "bottom-right",
     });
   };
 

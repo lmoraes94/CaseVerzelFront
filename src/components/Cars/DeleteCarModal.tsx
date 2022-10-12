@@ -46,7 +46,7 @@ export const DeleteCarModal = ({
         status: "success",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
       queryClient.invalidateQueries("cars");
       onClose();
@@ -59,7 +59,7 @@ export const DeleteCarModal = ({
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     },
   });

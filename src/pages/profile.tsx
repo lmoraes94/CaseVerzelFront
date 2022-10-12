@@ -86,175 +86,136 @@ const Profile: NextPage = () => {
           spacing={4}
           role="profile/stack"
         >
-          <Tabs isFitted>
-            <TabList>
-              <Tab>Usuário</Tab>
-              <Tab>Contato</Tab>
-              <Tab>Outros</Tab>
-            </TabList>
+          <Box>
+            <Stack mt={4}>
+              <FormControl isRequired>
+                <FormLabel>Nome</FormLabel>
+                <Input
+                  {...register("name")}
+                  focusBorderColor={"blue.500"}
+                  type="text"
+                />
+                {errors && errors.name && (
+                  <FormHelperText>{errors.name.message}</FormHelperText>
+                )}
+              </FormControl>
+            </Stack>
 
-            <TabPanels>
-              <TabPanel>
-                <Box>
-                  <Stack mt={4}>
-                    <FormControl isRequired>
-                      <FormLabel>Nome</FormLabel>
-                      <Input
-                        {...register("name")}
-                        focusBorderColor={"blue.500"}
-                        type="text"
+            <Stack mt={5}>
+              <FormControl isRequired>
+                <FormLabel>Nome de usuário</FormLabel>
+                <Input
+                  {...register("username")}
+                  focusBorderColor={"blue.500"}
+                  type="text"
+                />
+                {errors && errors.username && (
+                  <FormHelperText>{errors.username.message}</FormHelperText>
+                )}
+              </FormControl>
+            </Stack>
+
+            <Stack mt={5}>
+              <FormControl>
+                <FormLabel>Senha</FormLabel>
+                <InputGroup>
+                  <Input
+                    {...register("password")}
+                    focusBorderColor={"blue.500"}
+                    type={isPasswordVisible ? "text" : "password"}
+                  />
+                  <InputRightElement width={"3.5rem"}>
+                    {isPasswordVisible ? (
+                      <AiOutlineEye
+                        size={24}
+                        cursor="pointer"
+                        onClick={() => setIsPasswordVisible(false)}
                       />
-                      {errors && errors.name && (
-                        <FormHelperText>{errors.name.message}</FormHelperText>
-                      )}
-                    </FormControl>
-                  </Stack>
-
-                  <Stack mt={5}>
-                    <FormControl isRequired>
-                      <FormLabel>Nome de usuário</FormLabel>
-                      <Input
-                        {...register("username")}
-                        focusBorderColor={"blue.500"}
-                        type="text"
+                    ) : (
+                      <AiOutlineEyeInvisible
+                        size={24}
+                        cursor="pointer"
+                        onClick={() => setIsPasswordVisible(true)}
                       />
-                      {errors && errors.username && (
-                        <FormHelperText>
-                          {errors.username.message}
-                        </FormHelperText>
-                      )}
-                    </FormControl>
-                  </Stack>
+                    )}
+                  </InputRightElement>
+                </InputGroup>
+                {errors && errors.password && (
+                  <FormHelperText>{errors.password.message}</FormHelperText>
+                )}
+              </FormControl>
+            </Stack>
+            <Box>
+              <Stack mt={4}>
+                <FormControl isRequired>
+                  <FormLabel>E-mail</FormLabel>
+                  <Input
+                    {...register("email")}
+                    focusBorderColor={"blue.500"}
+                    type="email"
+                  />
+                  {errors && errors.email && (
+                    <FormHelperText>{errors.email.message}</FormHelperText>
+                  )}
+                </FormControl>
+              </Stack>
 
-                  <Stack mt={5}>
-                    <FormControl>
-                      <FormLabel>Senha</FormLabel>
-                      <InputGroup>
-                        <Input
-                          {...register("password")}
-                          focusBorderColor={"blue.500"}
-                          type={isPasswordVisible ? "text" : "password"}
-                        />
-                        <InputRightElement width={"3.5rem"}>
-                          {isPasswordVisible ? (
-                            <AiOutlineEye
-                              size={24}
-                              cursor="pointer"
-                              onClick={() => setIsPasswordVisible(false)}
-                            />
-                          ) : (
-                            <AiOutlineEyeInvisible
-                              size={24}
-                              cursor="pointer"
-                              onClick={() => setIsPasswordVisible(true)}
-                            />
-                          )}
-                        </InputRightElement>
-                      </InputGroup>
-                      {errors && errors.password && (
-                        <FormHelperText>
-                          {errors.password.message}
-                        </FormHelperText>
-                      )}
-                    </FormControl>
-                  </Stack>
-
-                  <Stack
-                    mt={30}
-                    spacing={8}
-                    isInline
-                    justifyContent="flex-start"
-                    alignItems="center"
-                  >
-                    <Avatar src={user?.avatar} size="lg">
-                      {user?.avatar === null ? (
-                        false
-                      ) : (
-                        <AvatarBadge
-                          onClick={handleRemoveUserAvatar}
-                          as={IconButton}
-                          size="sm"
-                          rounded="full"
-                          top="-10px"
-                          colorScheme="red"
-                          aria-label="Remove Image"
-                          icon={<IoCloseOutline />}
-                        />
-                      )}
-                    </Avatar>
-                    <Button>
-                      Alterar
-                      <Input
-                        type="file"
-                        position="absolute"
-                        opacity="0"
-                        aria-hidden="true"
-                        accept="image/*"
-                        style={{ cursor: "pointer" }}
-                        onChange={(e) => {
-                          if (e.target.files)
-                            handleChangeUserAvatar(e.target.files[0]);
-                        }}
-                      />
-                    </Button>
-                  </Stack>
-                </Box>
-              </TabPanel>
-
-              <TabPanel>
-                <Box>
-                  <Stack mt={4}>
-                    <FormControl isRequired>
-                      <FormLabel>E-mail</FormLabel>
-                      <Input
-                        {...register("email")}
-                        focusBorderColor={"blue.500"}
-                        type="email"
-                      />
-                      {errors && errors.email && (
-                        <FormHelperText>{errors.email.message}</FormHelperText>
-                      )}
-                    </FormControl>
-                  </Stack>
-
-                  <Stack mt={5}>
-                    <FormControl>
-                      <FormLabel>Telefone</FormLabel>
-                      <Input
-                        {...register("phone")}
-                        focusBorderColor={"blue.500"}
-                        type="text"
-                        value={formatCellphone(
-                          values.phone ? values.phone : ""
-                        )}
-                        maxLength={15}
-                      />
-                      {errors && errors.phone && (
-                        <FormHelperText>{errors.phone.message}</FormHelperText>
-                      )}
-                    </FormControl>
-                  </Stack>
-                </Box>
-              </TabPanel>
-
-              <TabPanel>
-                <Box>
-                  <Stack mt={4}>
-                    <FormControl>
-                      <FormLabel>Função</FormLabel>
-                      <Select {...register("role")} placeholder="Selecione">
-                        <option value="Admin">Admin</option>
-                        <option value="User">User</option>
-                      </Select>
-                      {errors && errors.role && (
-                        <FormHelperText>{errors.role.message}</FormHelperText>
-                      )}
-                    </FormControl>
-                  </Stack>
-                </Box>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+              <Stack mt={5}>
+                <FormControl>
+                  <FormLabel>Telefone</FormLabel>
+                  <Input
+                    {...register("phone")}
+                    focusBorderColor={"blue.500"}
+                    type="text"
+                    value={formatCellphone(values.phone ? values.phone : "")}
+                    maxLength={15}
+                  />
+                  {errors && errors.phone && (
+                    <FormHelperText>{errors.phone.message}</FormHelperText>
+                  )}
+                </FormControl>
+              </Stack>
+            </Box>
+            <Stack
+              mt={30}
+              spacing={8}
+              isInline
+              justifyContent="flex-start"
+              alignItems="center"
+            >
+              <Avatar src={user?.avatar} size="xl">
+                {user?.avatar === null ? (
+                  false
+                ) : (
+                  <AvatarBadge
+                    onClick={handleRemoveUserAvatar}
+                    as={IconButton}
+                    size="md"
+                    rounded="full"
+                    top="-10px"
+                    colorScheme="red"
+                    aria-label="Remove Image"
+                    icon={<IoCloseOutline />}
+                  />
+                )}
+              </Avatar>
+              <Button>
+                Alterar
+                <Input
+                  type="file"
+                  position="absolute"
+                  opacity="0"
+                  aria-hidden="true"
+                  accept="image/*"
+                  style={{ cursor: "pointer" }}
+                  onChange={(e) => {
+                    if (e.target.files)
+                      handleChangeUserAvatar(e.target.files[0]);
+                  }}
+                />
+              </Button>
+            </Stack>
+          </Box>
 
           <Stack isInline justifyContent="flex-end" alignItems="center">
             <Button

@@ -97,7 +97,7 @@ export const AddUserModal = ({ isOpen, onClose }: AddUserModalProps) => {
         status: "success",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
       queryClient.invalidateQueries("users");
       onClose();
@@ -109,7 +109,7 @@ export const AddUserModal = ({ isOpen, onClose }: AddUserModalProps) => {
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     },
   });

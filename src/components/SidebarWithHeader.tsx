@@ -98,8 +98,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           <Image
             alt="Logo"
             src={"/static/images/logo.svg"}
-            width={colorMode === "light" ? 50 : 200}
-            height={50}
+            width={200}
+            height={70}
           />
           <CloseButton
             display={{ base: "flex", md: "none" }}

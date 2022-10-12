@@ -86,7 +86,7 @@ export const UpdateCarModal = ({
         status: "success",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
       queryClient.invalidateQueries("users");
       onClose();
@@ -98,7 +98,7 @@ export const UpdateCarModal = ({
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     },
   });
@@ -121,7 +121,7 @@ export const UpdateCarModal = ({
           status: "success",
           duration: 2500,
           isClosable: true,
-          position: "top",
+          position: "bottom-right",
         });
       }
     } catch (e: any) {
@@ -132,7 +132,7 @@ export const UpdateCarModal = ({
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     }
   };

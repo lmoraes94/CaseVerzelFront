@@ -116,7 +116,7 @@ export const UpdateUserModal = ({
         status: "success",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
       queryClient.invalidateQueries("users");
       onClose();
@@ -128,7 +128,7 @@ export const UpdateUserModal = ({
         status: "error",
         duration: 2500,
         isClosable: true,
-        position: "top",
+        position: "bottom-right",
       });
     },
   });
