@@ -108,24 +108,25 @@ export const UpdateCarModal = ({
 
     formData.append("image", image);
 
-    try {
-      const response = await api.patch(
-        `/cars/${chosenCar?.id}/cars-image`,
-        formData
-      );
+    const response = await api.patch(`/cars/${chosenCar?.id}/image`, formData);
 
-      if (response?.status === 200) {
-        toast({
-          title: "Sucesso.",
-          description: response.data.message,
-          status: "success",
-          duration: 2500,
-          isClosable: true,
-          position: "bottom-right",
-        });
-      }
-    } catch (e: any) {
-      console.log(e);
+    return response;
+  };
+
+  const { mutate: mutateImage } = useMutation(handleChangeCarImage, {
+    onSuccess: ({ data }) => {
+      toast({
+        title: "Sucesso.",
+        description: data?.message,
+        status: "success",
+        duration: 2500,
+        isClosable: true,
+        position: "bottom-right",
+      });
+      queryClient.invalidateQueries("cars");
+      onClose();
+    },
+    onError: (e: any) => {
       toast({
         title: "Erro.",
         description: e.response.data.message,
@@ -134,8 +135,8 @@ export const UpdateCarModal = ({
         isClosable: true,
         position: "bottom-right",
       });
-    }
-  };
+    },
+  });
 
   return (
     <Modal
@@ -198,7 +199,7 @@ export const UpdateCarModal = ({
                 accept="image/*"
                 style={{ cursor: "pointer" }}
                 onChange={(e) => {
-                  if (e.target.files) handleChangeCarImage(e.target.files[0]);
+                  if (e.target.files) mutateImage(e.target.files[0]);
                 }}
               />
             </Button>
