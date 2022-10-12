@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
 import Lottie from "lottie-react";
-import loadingDefaultAnimation from "../../assets/lotties/loadingRequest.json";
-import errorDefaultAnimation from "../../assets/lotties/failed.json";
+import loadingDefaultAnimation from "../../assets/lotties/loading.json";
+import errorDefaultAnimation from "../../assets/lotties/not-found.json";
 import { useRouter } from "next/router";
 
 type UserMainProps = {

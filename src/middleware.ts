@@ -8,7 +8,9 @@ export function middleware(req: NextRequest) {
   const currentUrl = req.url;
 
   if (
-    (currentUrl.includes("/users") || currentUrl.includes("/cars")) &&
+    (currentUrl.includes("/users") ||
+      currentUrl.includes("/profile") ||
+      currentUrl.includes("/cars")) &&
     !cookies
   ) {
     return NextResponse.redirect(new URL("/", req.url));
