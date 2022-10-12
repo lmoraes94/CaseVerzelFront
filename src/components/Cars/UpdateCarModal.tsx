@@ -1,11 +1,14 @@
 import React, { useRef } from "react";
 import { Car } from "../../types/Car";
 import {
+  Box,
   Button,
+  Avatar,
   FormControl,
   FormLabel,
   HStack,
   Input,
+  IconButton,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -19,10 +22,13 @@ import {
   NumberInputStepper,
   Stack,
   useToast,
+  AvatarBadge,
 } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "react-query";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
+import { IoCloseOutline } from "react-icons/io5";
+import { FiUpload } from "react-icons/fi";
 
 type UpdateCarModalProps = {
   chosenCar: Car;
@@ -138,6 +144,37 @@ export const UpdateCarModal = ({
     },
   });
 
+  const handleRemoveCarImage = async () => {
+    const response = await api.patch(`/cars/${chosenCar?.id}/remove-image`);
+
+    return response;
+  };
+
+  const { mutate: mutateRemoveImage } = useMutation(handleRemoveCarImage, {
+    onSuccess: ({ data }) => {
+      toast({
+        title: "Sucesso.",
+        description: data?.message,
+        status: "success",
+        duration: 2500,
+        isClosable: true,
+        position: "bottom-right",
+      });
+      queryClient.invalidateQueries("cars");
+      onClose();
+    },
+    onError: (e: any) => {
+      toast({
+        title: "Erro.",
+        description: e.response.data.message,
+        status: "error",
+        duration: 2500,
+        isClosable: true,
+        position: "bottom-right",
+      });
+    },
+  });
+
   return (
     <Modal
       isOpen={isOpen}
@@ -184,25 +221,46 @@ export const UpdateCarModal = ({
                 <NumberInputField {...register("price")} />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
-
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
             </FormControl>
-            <Button>
-              Alterar imagem
-              <Input
-                type="file"
-                position="absolute"
-                opacity="0"
-                aria-hidden="true"
-                accept="image/*"
-                style={{ cursor: "pointer" }}
-                onChange={(e) => {
-                  if (e.target.files) mutateImage(e.target.files[0]);
-                }}
-              />
-            </Button>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-around"
+            >
+              <Avatar src={chosenCar?.image} size="xl">
+                {chosenCar?.image === null ? (
+                  false
+                ) : (
+                  <AvatarBadge
+                    onClick={() => mutateRemoveImage()}
+                    as={IconButton}
+                    size="md"
+                    rounded="full"
+                    top="-10px"
+                    colorScheme="red"
+                    aria-label="Remove Image"
+                    icon={<IoCloseOutline />}
+                  />
+                )}
+              </Avatar>
+              <Button leftIcon={<FiUpload />} colorScheme="yellow">
+                Alterar imagem
+                <Input
+                  type="file"
+                  position="absolute"
+                  opacity="0"
+                  aria-hidden="true"
+                  accept="image/*"
+                  style={{ cursor: "pointer" }}
+                  onChange={(e) => {
+                    if (e.target.files) mutateImage(e.target.files[0]);
+                  }}
+                />
+              </Button>
+            </Box>
             <HStack style={{ marginTop: "32px" }} justifyContent={"flex-end"}>
               <Button mr={3} onClick={onClose}>
                 Fechar
@@ -211,7 +269,7 @@ export const UpdateCarModal = ({
                 ref={initialRef}
                 type="submit"
                 isLoading={status === "loading"}
-                colorScheme="blue"
+                colorScheme="purple"
               >
                 Salvar
               </Button>

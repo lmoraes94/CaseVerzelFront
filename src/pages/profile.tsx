@@ -14,12 +14,6 @@ import {
   FormLabel,
   InputGroup,
   InputRightElement,
-  Select,
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
   Box,
 } from "@chakra-ui/react";
 import { useAuth } from "../hooks/useAuth";
