@@ -54,7 +54,7 @@ const Cars: NextPage = () => {
             flexDirection={"row"}
           >
             <Text fontSize={"3xl"} mt={2} mb={6}>
-              Veículos
+              Cadastro de veículos
             </Text>
           </Stack>
           <CarTable

@@ -24,6 +24,7 @@ import {
   Tr,
   Button,
   Input,
+  Image,
   Avatar,
   IconButton,
   Text,
@@ -160,7 +161,14 @@ export const CarTable = ({
                   <Tr key={index}>
                     <Td>{item?.id}</Td>
                     <Td>
-                      <Avatar name={item?.brand} src={item?.image} />
+                      <Image
+                        maxWidth="200px"
+                        maxHeight="100px"
+                        objectFit="cover"
+                        objectPosition="center"
+                        src={item?.image}
+                        alt="#"
+                      />
                     </Td>
                     <Td>{item?.brand}</Td>
                     <Td>{item?.model}</Td>
