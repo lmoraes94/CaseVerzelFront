@@ -49,7 +49,7 @@ export const SidebarWithHeader = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box minH="100vh" bg={useColorModeValue("purple.100", "gray.900")}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -86,7 +86,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     <>
       <Box
         transition="3s ease"
-        bg={useColorModeValue("#fff", "gray.900")}
+        bg={useColorModeValue("purple.300", "gray.900")}
         borderRight="1px"
         borderRightColor={useColorModeValue("gray.200", "gray.700")}
         w={{ base: "full", md: 60 }}
@@ -144,12 +144,12 @@ const NavItem = ({ pageLink, icon, children, ...rest }: NavItemProps) => {
         p="4"
         role="group"
         cursor="pointer"
-        bg={isCurrentLinkSelected ? "blue.500" : ""}
+        bg={isCurrentLinkSelected ? "purple.500" : ""}
         color={isCurrentLinkSelected ? "#fff" : ""}
-        borderRight={isCurrentLinkSelected ? "5px solid #140f5e" : ""}
+        borderRight={isCurrentLinkSelected ? "5px solid purple" : ""}
         _hover={{
-          bg: "blue.500",
-          color: "#fff",
+          bg: "purple.500",
+          color: "purple.300",
         }}
         {...rest}
       >
@@ -186,7 +186,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       px={{ base: 4, md: 4 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue("#fff", "gray.900")}
+      bg={useColorModeValue("purple.300", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent={{ base: "space-between", md: "flex-end" }}

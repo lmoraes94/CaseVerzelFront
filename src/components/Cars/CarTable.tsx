@@ -97,7 +97,7 @@ export const CarTable = ({
       ) : (
         false
       )}
-      <Box border="1px solid #2d3748" borderRadius={8}>
+      <Box>
         <Box
           mb={6}
           p={4}
@@ -161,14 +161,7 @@ export const CarTable = ({
                   <Tr key={index}>
                     <Td>{item?.id}</Td>
                     <Td>
-                      <Image
-                        maxWidth="200px"
-                        maxHeight="100px"
-                        objectFit="cover"
-                        objectPosition="center"
-                        src={item?.image}
-                        alt="#"
-                      />
+                      <Avatar size={"xl"} src={item?.image} />
                     </Td>
                     <Td>{item?.brand}</Td>
                     <Td>{item?.model}</Td>

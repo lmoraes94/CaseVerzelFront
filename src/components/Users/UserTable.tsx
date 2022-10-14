@@ -96,7 +96,7 @@ export const UserTable = ({
       ) : (
         false
       )}
-      <Box border="1px solid #2d3748" borderRadius={8}>
+      <Box>
         <Box
           mb={6}
           p={4}
