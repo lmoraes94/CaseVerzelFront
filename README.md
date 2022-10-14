@@ -1,41 +1,23 @@
-# Template de Front-end
+## 🚀 Features
 
-O template é direcionado a todos que desejam iniciar um front-end com algumas funcionalidades já previamente implementadas.
+- 👥 Users - User Entity with pagination.
+- 🔒 Authentication - Security with SHA-512 algorithm.
 
-## 🚀 Funcionalidades
+## ⚙️ Installation
 
-- 👥 Usuários - Entidade de Usuários com paginação.
-- 🔒 Autenticação - Segurança com algoritmo SHA-512.
-- ✅ Yup - Biblioteca para validação.
-- 🧪 Jest - Biblioteca para testes unitários / de integração.
+To install the dependencies, use one of the following commands:
 
-## ⚙️ Instalação
-
-Para instalar as dependências, utilize um dos seguintes comandos:
-
-```bash
 - npm install
 - yarn
+
 ```
 
 ## 🪄 Uso
 
-Para inicializar o projeto, utilize um dos seguintes comandos:
+To initialize the project, use one of the following commands:
 
-```bash
 - yarn dev
 - npm run dev
+
+Use the generated credentials in the backend terminal
 ```
-
-Para rodar os testes, utilize um dos seguintes comandos:
-
-```bash
-- yarn test
-- npm run test
-```
-
-## 🤝 Apoio
-
-Pull requests são bem-vindas. Para maiores mudanças, primeiro abra uma issue para discutir o que você gostaria de mudar.
-
-Por gentileza, atualize os testes apropriadamente.
