@@ -1,18 +1,17 @@
-## 🚀 Features
+Features
 
-- 👥 Users - User Entity with pagination.
-- 🔒 Authentication - Security with SHA-512 algorithm.
+Users - User Entity with pagination.
+Cars - Cars Entity with pagination.
+Authentication - Security with SHA-512 algorithm.
 
-## ⚙️ Installation
+Installation
 
 To install the dependencies, use one of the following commands:
 
 - npm install
 - yarn
 
-```
-
-## 🪄 Uso
+Use
 
 To initialize the project, use one of the following commands:
 
@@ -20,4 +19,3 @@ To initialize the project, use one of the following commands:
 - npm run dev
 
 Use the generated credentials in the backend terminal
-```
